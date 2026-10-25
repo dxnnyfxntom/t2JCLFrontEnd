@@ -1,0 +1,38 @@
+<div class="alumno-container">
+  <h2>Listado de Alumnos UPN</h2>
+  
+  <div class="table-responsive">
+    <table class="alumno-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombres</th>
+          <th>Carrera</th>
+          <th>Ciclo</th>
+          <th>Promedio</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let alumno of alumnos">
+          <td>{{ alumno.id }}</td>
+          <td><strong>{{ alumno.nombres }}</strong></td>
+          <td>{{ alumno.carrera }}</td>
+          <td>{{ alumno.ciclo }}</td>
+          <td>{{ alumno.promedio }}</td>
+          <td>
+            <span [ngClass]="{'badge-green': alumno.promedio >= 13, 'badge-red': alumno.promedio < 13}">
+              {{ alumno.estadoAcademico }}
+            </span>
+          </td>
+          <td>
+            <button class="btn-delete" (click)="eliminarAlumno(alumno.id)">
+              Eliminar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
